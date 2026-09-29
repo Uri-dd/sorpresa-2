@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Primer Aniversario ❤️</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+            max-width: 450px;
+            width: 90%;
+        }
+        h1 { 
+            color: #d63031; 
+            margin-bottom: 20px;
+        }
+        p { 
+            color: #2d3436; 
+            line-height: 1.8; 
+            font-size: 18px;
+            display: none; 
+        }
+        button {
+            background-color: #ff7675;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        button:hover { 
+            background-color: #d63031; 
+        }
+        .heart {
+            position: absolute;
+            color: #ff7675;
+            font-size: 24px;
+            animation: float 4s ease-in infinite;
+            z-index: 1;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="carta">
+        <h1 id="titulo">Tengo otra sorpresa para ti</h1>
+        <button id="btnAbrir">Toca aquí para abrir</button>
+        <p id="mensaje">
+            <strong>Feliz primer aniversario, mi hermosa Capitas, mi niña, mi preciosa, mi prometida.</strong><br><br>
+            Quería hacerte algo diferente y especial usando un poco de mi carrera, pero la verdad es que ningún programa podría compilar todo lo que siento por ti, todo lo que haces sentir y vivir; tantas cosas que hemos pasado en este primer año y las que faltan y aun te sigo viendo como a la chava que me encontre en FACEBOOK y me parecia muy atractiva y no estaba equivocado ERES HERMOSISISISISISIMA Ani.<br><br>
+            Gracias por cada momento increíble a tu lado y por nunca dejarme solo en este año por siempre estar conmigo y por ser de mis motores principales para seguir adelante<br>
+            ¡Te amo muchísimo! ❤️
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('btnAbrir').addEventListener('click', function() {
+            // Ocultar el botón y cambiar el título
+            this.style.display = 'none';
+            document.getElementById('titulo').innerText = '¡Feliz Aniversario!';
+            
+            // Mostrar el mensaje con una pequeña animación de opacidad
+            const mensaje = document.getElementById('mensaje');
+            mensaje.style.display = 'block';
+            mensaje.style.animation = 'fadeIn 2s';
+            
+            // Iniciar la lluvia de corazones
+            crearCorazones();
+        });
+
+        function crearCorazones() {
+            setInterval(() => {
+                const corazon = document.createElement('div');
+                corazon.classList.add('heart');
+                corazon.innerHTML = '❤️';
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.body.appendChild(corazon);
+
+                // Eliminar el corazón del DOM después de 5 segundos para no saturar la memoria
+                setTimeout(() => {
+                    corazon.remove();
+                }, 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
